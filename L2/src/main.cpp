@@ -19,6 +19,9 @@ class Athlete {
     void printAthlette() {
       cout << this->name << "-" << this->age << "-" << this->time << endl;
     }
+     ~Athlete() {
+      cout << "Athlete is deleted" << endl;
+    }
 };
 
 ////
@@ -35,10 +38,11 @@ int main(){
     newFile >> name >> age >> time;
     Athlete* an_athlette = new Athlete(name, age, time);
     an_athlette->printAthlette();
+    delete an_athlette;
   }
 
   newFile.close();
-
+  
   return 0;
 }
 
