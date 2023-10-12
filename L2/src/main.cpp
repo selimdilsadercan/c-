@@ -4,19 +4,19 @@
 
 using namespace std;
 
-class Athlette {  
+class Athlete {
   private:
     string name;
     int age;
     double time;
   public:
-    Athlette(string n, int a, double t) {
-      name = n;
-      age = a;
-      time = t;
+    Athlete(string name, int age, double time) {
+        this->name = name;
+        this->age = age;
+        this->time = time;
     }
-    void printAthlette (Athlette athlette) {
-      cout << athlette.name << "-" << athlette.age << "-" << athlette.time << endl;
+    void printAthlette () {
+      cout << this->name << "-" << this->age << "-" << this->time << endl;
     }
 };
 
@@ -25,11 +25,16 @@ int main(){
   fstream newFile;
   newFile.open("athletes.txt", ios::in); //ios::in Open for input operations.
 
-  Athlette an_athlette = Athlette();
+  int *array = new int[3]; 
+
+  string name;
+  int age;
+  double time;
 
   while(!newFile.eof()){ // eof = end of file
-    newFile >> an_athlette.name >> an_athlette.age >> an_athlette.time;
-    an_athlette.printAthlette(an_athlette);
+    newFile >> name >> age >> time;
+    Athlete an_athlette = Athlete(name, age, time);
+    an_athlette.printAthlette();
   }
 
   newFile.close();
